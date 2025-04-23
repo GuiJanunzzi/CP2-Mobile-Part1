@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ActivityIndicator } from 'react-native';
-import { getCoordsByCity, getAirQuality } from '../services/openWeather';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { getCoordsByCity, getAirQuality } from '../Servicos/openWeather';
+import InputCidade from '../Components/InputCidade';
+import AQICard from '../Components/AQICards';
 
 export default function ConsultaScreen() {
   const [cidade, setCidade] = useState('');
@@ -11,6 +13,8 @@ export default function ConsultaScreen() {
   const consultar = async () => {
     setCarregando(true);
     setErro(null);
+    setDados(null);
+
     try {
       const { lat, lon } = await getCoordsByCity(cidade);
       const resultado = await getAirQuality(lat, lon);
@@ -18,6 +22,7 @@ export default function ConsultaScreen() {
     } catch (e) {
       setErro('Cidade não encontrada ou erro na API.');
     }
+
     setCarregando(false);
   };
 
@@ -25,40 +30,14 @@ export default function ConsultaScreen() {
     <View style={styles.container}>
       <Text style={styles.titulo}>Consulta de Qualidade do Ar</Text>
 
-      <Image source={require('../assets/imagens/poluicao2.jpg')} style={styles.image} />
-
-      <TextInput
-        placeholder="Digite a cidade"
-        style={styles.input}
-        value={cidade}
-        onChangeText={setCidade}
-      />
-
-      <TouchableOpacity style={styles.botao} onPress={consultar}>
-        <Text style={styles.botaoTexto}>Consultar</Text>
-      </TouchableOpacity>
+      <InputCidade cidade={cidade} setCidade={setCidade} aoPressionar={consultar} />
 
       {carregando && <ActivityIndicator size="large" color="#0277bd" />}
-
       {erro && <Text style={styles.erro}>{erro}</Text>}
-
-      {dados && (
-        <View style={styles.card}>
-          <Text style={styles.resultado}>AQI: {dados.aqi} - {descricaoAQI(dados.aqi)}</Text>
-          <Text style={styles.poluentes}>PM2.5: {dados.pm2_5}</Text>
-          <Text style={styles.poluentes}>PM10: {dados.pm10}</Text>
-        </View>
-      )}
-
-      <Image source={require('../../assets/ar-limpo')} style={styles.image} />
+      {dados && <AQICard dados={dados} />}
     </View>
   );
 }
-
-const descricaoAQI = (aqi) => {
-  const descricoes = ['Boa', 'Razoável', 'Moderada', 'Ruim', 'Muito Ruim']
-  return descricoes[aqi - 1] || 'Desconhecida';
-};
 
 const styles = StyleSheet.create({
   container: {
@@ -73,50 +52,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: '#01579b',
   },
-  input: {
-    borderWidth: 1,
-    borderColor: '#90caf9',
-    borderRadius: 8,
-    padding: 10,
-    marginBottom: 10,
-    backgroundColor: '#fff',
-  },
-  botao: {
-    backgroundColor: '#0288d1',
-    padding: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  botaoTexto: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  image: {
-    width: '100%',
-    height: 150,
-    marginVertical: 10,
-    borderRadius: 12,
-  },
   erro: {
     color: 'red',
     marginTop: 10,
     textAlign: 'center',
-  },
-  card: {
-    marginTop: 20,
-    backgroundColor: '#ffffff',
-    padding: 15,
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    elevation: 4,
-  },
-  resultado: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  poluentes: {
-    marginTop: 5,
-    fontSize: 16,
   },
 });

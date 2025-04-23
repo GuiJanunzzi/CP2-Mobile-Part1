@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 
 export default function HomeScreen({ navigation }) {
+  console.log(navigation);
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Respirar é um Direito</Text>

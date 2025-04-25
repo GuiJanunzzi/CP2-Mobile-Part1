@@ -15,7 +15,7 @@ export default function EducativaScreen() {
         AQI (Air Quality Index) é um índice que informa a qualidade do ar em uma região. Ele vai de 1 a 5:
       </Text>
 
-      <Image source={require('../../assets/faixa-aqi.png')} style={styles.image} />
+      <Image source={require('../../assets/faixa-aqi.jpg')} style={styles.image} />
 
       <Text style={styles.subtitulo}>Faixas do AQI:</Text>
       <Text style={styles.lista}>

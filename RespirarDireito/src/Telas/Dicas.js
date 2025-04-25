@@ -12,18 +12,22 @@ export default function DicasScreen() {
       <Text style={styles.titulo}>Dicas para Respirar Melhor</Text>
 
       <View style={styles.card}>
+        <Image source={require('../../assets/mascara.jpg')} style={styles.imagem} />
         <Text style={styles.texto}>Use máscara em dias de má qualidade do ar, especialmente N95 ou PFF2.</Text>
       </View>
 
       <View style={styles.card}>
+        <Image source={require('../../assets/plantas.jpg')} style={styles.imagem} />
         <Text style={styles.texto}>Tenha plantas em casa! Algumas espécies ajudam a filtrar o ar naturalmente.</Text>
       </View>
 
       <View style={styles.card}>
+      <Image source={require('../../assets/transporte.jpg')} style={styles.imagem} />
         <Text style={styles.texto}>Use transporte coletivo, bicicleta ou caminhe: menos carros, menos poluição.</Text>
       </View>
 
       <View style={styles.card}>
+      <Image source={require('../../assets/lixo-fogo.jpg')} style={styles.imagem} />
         <Text style={styles.texto}>Evite queimar lixo ou folhas — isso libera poluentes perigosos no ar.</Text>
       </View>
 

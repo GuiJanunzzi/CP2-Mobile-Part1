@@ -29,7 +29,7 @@ export default function HomeScreen({ navigation }) {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('Educativa')}
+        onPress={() => navigation.navigate('Educação')}
       >
         <Text style={styles.buttonText}>Aprenda sobre o AQI</Text>
       </TouchableOpacity>

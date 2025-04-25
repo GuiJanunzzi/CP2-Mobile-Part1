@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Tabs from './tab.routes';
+import DetalhesParticipante from '../Telas/DetalhesParticipante';
 
 const Stack = createNativeStackNavigator();
 
@@ -11,7 +12,7 @@ export default function StackNavigator() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
-        {/* Aqui você pode adicionar outras telas futuras, tipo Detalhes */}
+        <Stack.Screen name="DetalhesParticipante" component={DetalhesParticipante} options={{ title: 'Participante' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

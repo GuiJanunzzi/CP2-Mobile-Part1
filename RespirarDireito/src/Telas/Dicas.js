@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Linking } from 'react-native';
+import BotaoLink from '../Components/BotaoLink';
 
 export default function DicasScreen() {
   const abrirMaisDicas = () => {
-    Linking.openURL('https://www.greenpeace.org/brasil/blog/como-melhorar-a-qualidade-do-ar/');
+    Linking.openURL('https://www.greenpeace.org/brasil/');
   };
 
   return (
@@ -11,28 +12,22 @@ export default function DicasScreen() {
       <Text style={styles.titulo}>Dicas para Respirar Melhor</Text>
 
       <View style={styles.card}>
-        {/* <Image source={require('../assets/imagens/mascara.jpg')} style={styles.imagem} /> */}
         <Text style={styles.texto}>Use máscara em dias de má qualidade do ar, especialmente N95 ou PFF2.</Text>
       </View>
 
       <View style={styles.card}>
-        {/* <Image source={require('../assets/imagens/plantas.jpg')} style={styles.imagem} /> */}
         <Text style={styles.texto}>Tenha plantas em casa! Algumas espécies ajudam a filtrar o ar naturalmente.</Text>
       </View>
 
       <View style={styles.card}>
-        {/* <Image source={require('../assets/imagens/transporte.jpg')} style={styles.imagem} /> */}
         <Text style={styles.texto}>Use transporte coletivo, bicicleta ou caminhe: menos carros, menos poluição.</Text>
       </View>
 
       <View style={styles.card}>
-        {/* <Image source={require('../assets/imagens/lixo.jpg')} style={styles.imagem} /> */}
         <Text style={styles.texto}>Evite queimar lixo ou folhas — isso libera poluentes perigosos no ar.</Text>
       </View>
 
-      <TouchableOpacity style={styles.botao} onPress={abrirMaisDicas}>
-        <Text style={styles.botaoTexto}>Mais dicas no Greenpeace</Text>
-      </TouchableOpacity>
+      <BotaoLink texto="Mais dicas no Greenpeace" url="https://www.greenpeace.org/brasil/" cor="#ef6c00" />
     </ScrollView>
   );
 }

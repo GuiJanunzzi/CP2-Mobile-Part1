@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Linking } from 'react-native';
+import BotaoLink from '../Components/BotaoLink';
 
 export default function EducativaScreen() {
   const abrirLink = () => {
-    Linking.openURL('https://www.gov.br/inca/pt-br/assuntos/faq/qualidade-do-ar');
+    Linking.openURL('https://www.gov.br/inca/pt-br/assuntos/causas-e-prevencao-do-cancer/exposicao-no-trabalho-e-no-ambiente/poluentes/poluicao-do-ar');
   };
 
   return (
@@ -14,7 +15,7 @@ export default function EducativaScreen() {
         AQI (Air Quality Index) é um índice que informa a qualidade do ar em uma região. Ele vai de 1 a 5:
       </Text>
 
-      {/* <Image source={require('../assets/imagens/faixas-aqi.jpg')} style={styles.image} /> */}
+      <Image source={require('../../assets/faixa-aqi.png')} style={styles.image} />
 
       <Text style={styles.subtitulo}>Faixas do AQI:</Text>
       <Text style={styles.lista}>
@@ -32,11 +33,13 @@ export default function EducativaScreen() {
         • CO, NO2, SO2: gases que prejudicam a respiração e afetam principalmente crianças e idosos.
       </Text>
 
-      {/* <Image source={require('../assets/imagens/poluentes.jpg')} style={styles.image} /> */}
+      <Image source={require('../../assets/poluente.jpg')} style={styles.image} />
 
-      <TouchableOpacity style={styles.botao} onPress={abrirLink}>
-        <Text style={styles.botaoTexto}>Saiba mais sobre poluição no site do INCA</Text>
-      </TouchableOpacity>
+      <BotaoLink
+        texto="Saiba mais sobre poluição no site do INCA"
+        url="https://www.gov.br/inca/pt-br/assuntos/causas-e-prevencao-do-cancer/exposicao-no-trabalho-e-no-ambiente/poluentes/poluicao-do-ar"
+        cor="#388e3c"
+      />
     </ScrollView>
   );
 }

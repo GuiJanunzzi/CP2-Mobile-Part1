@@ -6,7 +6,7 @@ import HomeScreen from '../Telas/Home';
 import ConsultaScreen from '../Telas/Consulta';
 import EducativaScreen from '../Telas/Educativo';
 import DicasScreen from '../Telas/Dicas';
-// import SobreScreen from '../screens/SobreScreen';
+import SobreScreen from '../Telas/Sobre';
 
 const Tab = createBottomTabNavigator();
 
@@ -36,7 +36,7 @@ export default function Tabs() {
       <Tab.Screen name="Consulta" component={ConsultaScreen} />
       <Tab.Screen name="Educação" component={EducativaScreen} />
       <Tab.Screen name="Dicas" component={DicasScreen} />
-      {/* <Tab.Screen name="Sobre" component={SobreScreen} /> */}
+      <Tab.Screen name="Sobre" component={SobreScreen} />
     </Tab.Navigator>
   );
 }

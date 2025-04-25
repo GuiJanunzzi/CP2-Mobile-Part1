@@ -3,12 +3,12 @@ import { View, Text, StyleSheet } from 'react-native';
 
 export default function AQICard({ dados }) {
   const getDescricaoAQI = (aqi) => {
-    if (aqi <= 50) return 'Boa';
-    if (aqi <= 100) return 'Razoável';
-    if (aqi <= 150) return 'Moderada';
-    if (aqi <= 200) return 'Ruim';
-    if (aqi <= 300) return 'Muito Ruim';
-    return 'Perigosa'; // Para valores acima de 300
+    if (aqi === 1) return 'Boa';
+    if (aqi === 2) return 'Razoável';
+    if (aqi === 3) return 'Moderada';
+    if (aqi === 4) return 'Ruim';
+    if (aqi === 5) return 'Muito Ruim';
+    return 'Perigosa'; // Para valores acima de 5
   };
 
   return (
